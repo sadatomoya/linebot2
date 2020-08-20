@@ -18,9 +18,8 @@
 
 require_once('./LINEBotTiny.php');
 
-$channelAccessToken = '71yvtBsOWeZBLy7Vu8He4L3SL//BUAVKf15po42SCZmrIhNph9w30qRqBQGmXTU+uef6gt6G9AUf9F9dUepKwZX5xFD0bycJlKKlBvAZpEpcg3EpSCc3TnyYZL25xvMVCKTgIUXJWL7laZDFkdY6iQdB04t89/1O/w1cDnyilFU=';
-$channelSecret = 'c89ac7a23490966b641f672c73f37917';
-
+$channelAccessToken = '6eTZVQJKKlU+rWH/HALGZX4I/3S6AXjt6RweR7wn7f4/WsnKNgCuh0EV/ymbLgJlZh9xMuhfd2TdK9+gsw79uwRXzQzA3cUAt1fH5c6IhjAyfFBmcuFEh/UJ/FyEE8x6cpiYZ+yinMlZRFEAWvha2QdB04t89/1O/w1cDnyilFU=';
+$channelSecret = 'b367193c20bd18c41451463749542ee6';
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 foreach ($client->parseEvents() as $event) {
     switch ($event['type']) {
@@ -28,6 +27,9 @@ foreach ($client->parseEvents() as $event) {
             $message = $event['message'];
             switch ($message['type']) {
                 case 'text':
+					if(strpos($message['text'],'天気') !== fales){
+						$rep = "http://weather.yahoo.co.jp/weather/";
+					}
                     $client->replyMessage([
                         'replyToken' => $event['replyToken'],
                         'messages' => [
