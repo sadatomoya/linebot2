@@ -29,6 +29,12 @@ foreach ($client->parseEvents() as $event) {
                 case 'text':
 					if(strpos($message['text'],'天気') !== fales){
 						$rep = "http://weather.yahoo.co.jp/weather/";
+					} else if (strpos($message['text'],'疲れた') !== false){
+						$rep = "お疲れさまでした";
+					} else if (strpos($message['text'],'おっら') !== false){
+						$rep = "なんやこら";
+					} else if (strops($message['text'],'ムーミン') !== false){
+						$rep = "ど〜ぞ〜" .  "https://www.peikko-moomin.jp/";
 					}
                     $client->replyMessage([
                         'replyToken' => $event['replyToken'],
